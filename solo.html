@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>昀圻的個人網頁</title>
+  <style>
+    /* --- 基本設定 --- */
+    body {
+      margin: 0;
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(135deg, #d7c4f3, #b9e3ff);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #6b5b95;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+    }
+
+    /* --- 導覽列 --- */
+    nav {
+      margin-top: 1rem;
+      background: #f3e8ff;
+      border-radius: 50px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      padding: 0.5rem 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav button {
+      background: #c6b8ff;
+      border: none;
+      border-radius: 30px;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    nav button:hover, nav button.active {
+      background: #8f7cfb;
+      transform: scale(1.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* --- 主內容區 --- */
+    .container {
+      background: #fff;
+      margin-top: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 700px;
+      padding: 2rem;
+      animation: fadeIn 0.6s ease;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- 特殊區塊樣式 --- */
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 1rem auto;
+      border: 4px solid #c8b6ff;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #e9ddff;
+      border-radius: 12px;
+      padding: 0.6rem 1rem;
+      margin: 0.5rem 0;
+      transition: 0.2s;
+    }
+
+    li:hover {
+      background: #dcd1ff;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      text-align: center;
+      color: #6b5b95;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌸 昀圻的個人小天地 🌸</h1>
+
+  <nav>
+    <button class="active" onclick="showPage('about')">個人簡介</button>
+    <button onclick="showPage('works')">個人作品</button>
+    <button onclick="showPage('hobbies')">喜好</button>
+  </nav>
+
+  <div class="container">
+    <section id="about" class="active">
+      <img src="https://i.imgur.com/8Km9tLL.png" alt="個人頭像" class="profile-img">
+      <h2>✨ 關於我 ✨</h2>
+      <p>嗨，我是昀圻，一位熱愛前端設計與插畫風格的創作者。  
+         喜歡用程式和色彩讓畫面充滿故事與溫度 💫。</p>
+      <ul>
+        <li>專長：HTML / CSS / JavaScript / React</li>
+        <li>興趣：繪畫、貓咪、甜點、動畫</li>
+        <li>目標：成為能設計出「療癒感介面」的前端設計師</li>
+      </ul>
+    </section>
+
+    <section id="works">
+      <h2>🎨 我的作品 🎨</h2>
+      <ul>
+        <li><strong>作品 1：</strong>個人作品展示平台 — 使用 React 與 Tailwind 製作</li>
+        <li><strong>作品 2：</strong>互動小遊戲 — 用 JavaScript 製作的貓咪抓魚遊戲 🐱</li>
+        <li><strong>作品 3：</strong>插畫風名片頁 — 可愛風 RWD 網頁卡片</li>
+      </ul>
+    </section>
+
+    <section id="hobbies">
+      <h2>💖 我的喜好 💖</h2>
+      <p>我喜歡：</p>
+      <ul>
+        <li>🐾 養貓、看貓影片</li>
+        <li>🍰 製作甜點與下午茶</li>
+        <li>🎧 聽輕音樂與遊戲原聲帶</li>
+        <li>🌈 嘗試畫出可愛卡通風角色</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 昀圻的個人網頁 💜
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      // 切換 section 顯示
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      // 切換按鈕樣式
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
