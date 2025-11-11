@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>昀圻的小天地 💜</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #e6d6ff, #b6dbff);
+      overflow-x: hidden;
+      color: #444;
+    }
+
+    header {
+      background-color: #c6a5ff;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+    header h1 { margin: 0; font-size: 2rem; }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: #e8ddff;
+      border-bottom: 3px solid #bea8ff;
+      padding: 0.8rem;
+    }
+
+    nav button {
+      background: #fff;
+      border: 2px solid #bba7ff;
+      color: #6b57b9;
+      font-size: 1rem;
+      border-radius: 25px;
+      padding: 0.6rem 1.3rem;
+      margin: 5px 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    nav button:hover,
+    nav button.active {
+      background-color: #bba7ff;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #ffffffcc;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    section {
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transform: translateX(100px);
+      transition: all 0.7s ease;
+      pointer-events: none;
+    }
+    section.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+    section.leave-left {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+
+    h2 {
+      color: #6b57b9;
+      border-left: 5px solid #bba7ff;
+      padding-left: 10px;
+    }
+    ul { list-style-type: "💜 "; padding-left: 1.5rem; }
+
+    footer {
+      text-align: center;
+      background-color: #c6a5ff;
+      color: white;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* 💜 泡泡動畫 */
+    .bubble {
+      position: fixed;
+      bottom: -50px;
+      font-size: 24px;
+      opacity: 0.8;
+      animation: float 6s linear infinite;
+      z-index: 0;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+
+    /* 🐱 貓咪動畫 */
+    .cat {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      width: 80px;
+      animation: jump 1.2s ease-in-out infinite;
+      z-index: 10;
+    }
+    @keyframes jump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* 📱 RWD */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      nav button { font-size: 0.9rem; padding: 0.5rem 1rem; }
+      .container { margin: 1rem; padding: 1.2rem; min-height: 250px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>昀圻的小天地 ✨</h1>
+    <p>歡迎來到我的可愛星球 💜</p>
+  </header>
+
+  <nav>
+    <button class="active" onclick="showPage('intro')">個人簡介</button>
+    <button onclick="showPage('works')">個人作品</button>
+    <button onclick="showPage('hobbies')">喜好</button>
+  </nav>
+
+  <div class="container">
+    <section id="intro" class="active">
+      <h2>關於我 💫</h2>
+      <p>嗨～我是昀圻，一個熱愛設計、程式與貓咪的靈魂 🐾。<br>
+      我相信網頁能用色彩與互動讓人微笑～</p>
+      <ul>
+        <li>專長：HTML、CSS、JavaScript、React</li>
+        <li>風格：柔和、可愛、有動畫感</li>
+        <li>夢想：打造溫柔又療癒的網頁宇宙 💜</li>
+      </ul>
+    </section>
+
+    <section id="works">
+      <h2>我的作品 🎨</h2>
+      <ul>
+        <li><a href="#">🌸 可愛風個人名片網站</a></li>
+        <li><a href="#">🌼 互動式作品展示平台</a></li>
+        <li><a href="#">🌙 星空主題筆記本網頁</a></li>
+      </ul>
+    </section>
+
+    <section id="hobbies">
+      <h2>我的喜好 ☕</h2>
+      <ul>
+        <li>畫畫與手帳</li>
+        <li>旅行、街角咖啡館</li>
+        <li>聽輕音樂、打程式放鬆心情</li>
+      </ul>
+    </section>
+
+    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f408.svg" class="cat" alt="cat" />
+  </div>
+
+  <footer>© 2025 昀圻的小天地 💜</footer>
+
+  <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9e2b1a96d0.mp3?filename=button-124476.mp3"></audio>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const buttons = document.querySelectorAll("nav button");
+    const sound = document.getElementById("clickSound");
+    let current = document.querySelector("section.active");
+
+    function showPage(pageId) {
+      if (document.getElementById(pageId) === current) return;
+      sound.currentTime = 0;
+      sound.play();
+
+      // 先讓目前的頁面滑出
+      current.classList.remove("active");
+      current.classList.add("leave-left");
+
+      // 延遲再顯示新頁面
+      setTimeout(() => {
+        current.classList.remove("leave-left");
+        const next = document.getElementById(pageId);
+        next.classList.add("active");
+        current = next;
+      }, 400);
+
+      buttons.forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
+    }
+
+    // 💜 泡泡效果
+    const emojis = ["💜", "🌸", "✨", "🐾", "🩵"];
+    function createBubble() {
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      bubble.style.left = Math.random() * 100 + "vw";
+      bubble.style.animationDuration = 5 + Math.random() * 3 + "s";
+      document.body.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 7000);
+    }
+    setInterval(createBubble, 900);
+  </script>
+
+</body>
+</html>
