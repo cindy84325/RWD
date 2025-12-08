@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>勤益科技大學 NCUT</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #FFF7E6;
+      color: #444;
+      scroll-behavior: smooth; /* 滑動動畫 */
+    }
+
+    header {
+      background-color: #FF914D;
+      color: white;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    
+    .navbar {
+      background-color: #FFE1C4;
+      padding: 10px 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .hamburger {
+      width: 30px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 20px;
+    }
+
+    .hamburger div {
+      width: 100%;
+      height: 4px;
+      background-color: #D65A00;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #FFE1C4;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #D65A00;
+      font-weight: bold;
+      padding: 10px 0;
+      border-top: 1px solid #FFDAB0;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #FFDAB0;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .banner {
+      height: 300px;
+      background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      color: white;
+      font-weight: bold;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    footer {
+      background-color: #FF7A2F;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="images/ncutlogo486x79_1140508.png" alt="NCUT Logo"  width="400">
+  <h1>勤益科技大學 NCUT</h1>
+  <p>National Chin-Yi University of Technology</p>
+</header>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">關於勤益</a>
+    <a href="#faculties">學院介紹</a>
+    <a href="#news">最新消息</a>
+    <a href="#admissions">招生資訊</a>
+    <a href="#campus">校園導覽</a>
+  </div>
+</nav>
+
+<section class="banner">
+  活力 × 創新 × 實作的技職殿堂
+</section>
+
+<div class="container">
+  <div class="card" id="about">
+    <h2>關於勤益</h2>
+    <p>勤益科技大學創立於民國 60 年，位於台中市北區，是台灣知名技職教育學府，致力於培育具實務能力與創新精神的學生，提供理論與實作兼具的完整教育。</p>
+  </div>
+
+  <div class="card" id="faculties">
+    <h2>學院介紹</h2>
+    <p>學校設有多個學院：工程學院、管理學院、設計學院及資訊學院。各學院均強調實務導向，並與產業合作，讓學生在校期間就能累積實務經驗。</p>
+  </div>
+
+  <div class="card" id="news">
+    <h2>最新消息</h2>
+    <ul>
+      <li>📢 112 學年度專題成果展即日起開放報名。</li>
+      <li>🎓 畢業生職涯博覽會將於 5 月舉行。</li>
+      <li>🔧 校園設備更新工程進行中。</li>
+      <li>🌱 綠能研發計畫榮獲國際獎項。</li>
+    </ul>
+  </div>
+
+  <div class="card" id="admissions">
+    <h2>招生資訊</h2>
+    <p>提供高中生及在職人士多種入學管道，包括繁星推薦、個人申請及甄試入學，並提供完整的就學諮詢與輔導服務，讓學生順利入學。</p>
+  </div>
+
+  <div class="card" id="campus">
+    <h2>校園導覽</h2>
+    <p>校園佔地廣闊，擁有現代化教學大樓、實驗室、圖書館及運動設施，綠意盎然的環境適合學習、研究與休閒，並提供完整無障礙設施。</p>
+  </div>
+</div>
+
+<footer>
+  © 2025 勤益科技大學 NCUT — 版權所有
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('show');
+  });
+
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('show');
+    });
+  });
+</script>
+
+</body>
+</html>

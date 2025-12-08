@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>勤益科技大學 NCUT</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #FFF7E6; /* 柔和暖底色 */
+      color: #444;
+    }
+
+    header {
+      background-color: #FF914D; /* 橘色，朝氣活潑 */
+      color: white;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      background-color: #FFE1C4; /* 淡橘色導覽列 */
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      font-size: 18px;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #D65A00;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #FF6A00;
+    }
+
+    .banner {
+      height: 300px;
+      background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      color: white;
+      font-weight: bold;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: #FF7A2F;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/ncutlogo486x79_1140508.png" alt="NCUT Logo"  width="400">
+    <h1>勤益科技大學 NCUT</h1>
+    <p>National Chin-Yi University of Technology</p>
+  </header>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#">關於勤益</a>
+      <a href="#">學院介紹</a>
+      <a href="#">最新消息</a>
+      <a href="#">招生資訊</a>
+      <a href="#">校園導覽</a>
+    </div>
+  </nav>
+
+  <style>
+    /* Hamburger */
+    .navbar {
+      background-color: #FFE1C4;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hamburger {
+      width: 30px;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 100%;
+      height: 4px;
+      background-color: #D65A00;
+      margin: 5px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #D65A00;
+      font-weight: bold;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    /* Hover animation: underline grows */
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 3px;
+      background-color: #FF6A00;
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* RWD */
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #FFE1C4;
+        padding: 15px;
+        border-radius: 10px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+
+  <script>
+    let menuOpen = false;
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        nav.classList.add("active");
+      } else {
+        nav.classList.remove("active");
+      }
+    }
+
+    // 點選選單後自動收起
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll('#navLinks a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          const nav = document.getElementById("navLinks");
+          nav.classList.remove("active");
+          menuOpen = false;
+        });
+      });
+    });
+  </script>
+
+  <section class="banner">
+    活力 × 創新 × 實作的技職殿堂
+  </section>
+
+  <div class="container">
+    <div class="card">
+      <h2>學校介紹</h2>
+      <p>勤益科技大學位於台中市，致力於培育實作能力強、具創新思維的技職人才。</p>
+    </div>
+
+    <div class="card">
+      <h2>最新消息</h2>
+      <ul>
+        <li>📢 112 學年度專題成果展即日起開放報名。</li>
+        <li>🎓 畢業生職涯博覽會將於 5 月舉行。</li>
+        <li>🔧 校園設備更新工程進行中。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>熱門連結</h2>
+      <ul>
+        <li>📘 課程查詢系統</li>
+        <li>💼 就業輔導中心</li>
+        <li>🏫 校園地圖</li>
+        <li>📄 行政系統</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 勤益科技大學 NCUT — 版權所有
+  </footer>
+
+</body>
+</html>
