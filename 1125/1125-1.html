@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏目友人帳介紹</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "微軟正黑體", sans-serif;
+        background-color: #FFE8D6; /* 暖色背景 */
+        color: #5a3d2b;
+    }
+
+/* ---- 導覽列 ---- */
+.navbar {
+    background-color: #FFBC8F;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;              /* 加上這行避免偏移 */
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* 防止 padding 造成寬度外溢 */
+}
+
+.menu-btn {
+    font-size: 26px;
+    cursor: pointer;
+    user-select: none;
+    padding-right: 10px; /* 讓按鈕不會貼到右邊界 */
+}
+
+/* ---- 修正展開清單 ---- */
+/* 改為 "推開內容" 而不是浮在內容上 */
+.nav-list {
+    background-color: #FFD5B8;
+    padding: 10px 0;
+    width: 100%;
+    display: none;
+    position: relative;  /* 這行讓它跟著文件流，不會蓋住內容 */
+    top: 60px;           /* 放在導覽列下面 */
+    box-sizing: border-box;
+}
+
+.nav-list a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #5a3d2b;
+    font-weight: bold;
+}
+
+.nav-list a:hover {
+    background-color: #FFBC8F;
+}
+
+/* ---- 主區塊 ---- */
+/* 因為導覽列固定，調整頁面內容向下移動 */
+section {
+    padding: 100px 20px 40px; /* 多增加上方距離避免被導覽列擋住 */
+}
+
+    h2 {
+        border-left: 6px solid #FF9B73;
+        padding-left: 10px;
+        color: #5a3d2b;
+    }
+
+    /* ---- 人物卡片 ---- */
+    .character {
+        background: #FFDCC3;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 10px;
+    }
+
+    /* ---- 圖片集 ---- */
+    .gallery-container {
+        position: relative;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .gallery-img {
+        width: 100%;
+        border-radius: 10px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .arrow {
+        position: absolute;
+        top: 45%;
+        font-size: 50px;
+        color: #FF9B73;
+        cursor: pointer;
+        user-select: none;
+    }
+    .left-arrow { left: -50px; }
+    .right-arrow { right: -50px; }
+
+    /* ---- 彈出視窗 ---- */
+    .popup-bg {
+        display: none;
+        position: fixed;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+    }
+
+    .popup-box {
+        background: #FFF1E6;
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 500px;
+        position: relative;
+        text-align: center;
+        overflow: visible;   /* 讓 close 按鈕不被限制 */
+    }
+
+    /*.popup-box img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .close-popup {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }*/
+    .close-popup {
+        position: absolute;
+        right: -10px;       /* 往外移一些，避免被圖片邊緣蓋住 */
+        top: -10px;
+        font-size: 28px;
+        background: #FFBC8F;
+        padding: 5px 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 9999;       /* ✨重點: 確保永遠在最上層 */
+    }
+
+    .popup-box img {
+        width: 100%;
+        border-radius: 10px;
+        display: block;
+        position: relative;
+        z-index: 1;          /* 圖片層級調低 */
+    }
+</style>
+</head>
+<body>
+
+<!-- 導覽列 -->
+<div class="navbar">
+    <div style="font-size:20px; font-weight:bold;">夏目友人帳</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</div>
+
+<div class="nav-list" id="menuList">
+    <a href="#intro">作品介紹</a>
+    <a href="#characters">人物簡介</a>
+    <a href="#gallery">圖片集</a>
+</div>
+
+<!-- 介紹 -->
+<section id="intro">
+    <h2>作品介紹</h2>
+    <p>
+        《夏目友人帳》講述能看見妖怪的少年夏目貴志，繼承外婆「友人帳」後，
+        與妖怪們之間發生的溫柔又療癒的故事。作品以細膩的人情與溫暖的畫風，
+        帶給觀眾舒適與感動。
+    </p>
+</section>
+
+<!-- 人物介紹 -->
+<section id="characters">
+    <h2>人物簡介</h2>
+
+    <div class="character">
+        <h3>夏目貴志</h3>
+        <p>能看見妖怪的少年，心地善良，背負著外婆留下的友人帳。</p>
+    </div>
+
+    <div class="character">
+        <h3>貓咪老師（斑）</h3>
+        <p>強大的妖怪，外型像一隻胖貓。自稱是夏目的保鏢，實際上十分可靠。</p>
+    </div>
+
+</section>
+
+<!-- 圖片集 -->
+<section id="gallery">
+    <h2>圖片集</h2>
+
+    <div class="gallery-container">
+        <span class="arrow left-arrow" onclick="prevImage()">❮</span>
+        <img id="mainImage" class="gallery-img"
+            src="images/夏目友人帳.jpg"
+            data-alt="images/夏目友人帳.jpg"
+            onclick="openPopup()">
+        <span class="arrow right-arrow" onclick="nextImage()">❯</span>
+    </div>
+</section>
+
+<!-- 彈出視窗 -->
+<div class="popup-bg" id="popup">
+    <div class="popup-box">
+        <div class="close-popup" onclick="closePopup()">✕</div>
+        <img id="popupImage">
+        <p id="popupText"></p>
+    </div>
+</div>
+
+<script>
+/* ---- 導覽列開合 ---- */
+function toggleMenu() {
+    const menu = document.getElementById("menuList");
+    const btn = document.querySelector(".menu-btn");
+
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+        btn.textContent = "☰";
+    } else {
+        menu.style.display = "block";
+        btn.textContent = "✕";
+    }
+}
+
+/* ---- 圖片集資料 ---- */
+const images = [
+    {
+        img: "images/夏目友人帳.jpg",
+        alt: "images/夏目友人帳.jpg",
+        text: "夏目與貓咪老師的暖心時刻"
+    },
+    {
+        img: "images/22.jpg",
+        alt: "images/22.jpg",
+        text: "夏目凝視遠方的身影"
+    },
+    {
+        img: "images/夏目友人帳.jpg",
+        alt: "images/夏目友人帳.jpg",
+        text: "貓咪老師的可愛模樣"
+    }
+];
+
+let index = 0;
+
+const mainImage = document.getElementById("mainImage");
+
+/* 滑鼠移入換圖 */
+mainImage.addEventListener("mouseover", () => {
+    mainImage.src = images[index].alt;
+});
+mainImage.addEventListener("mouseout", () => {
+    mainImage.src = images[index].img;
+});
+
+/* 左右切換 */
+function updateImage() {
+    mainImage.src = images[index].img;
+    mainImage.setAttribute("data-alt", images[index].alt);
+}
+function prevImage() {
+    index = (index - 1 + images.length) % images.length;
+    updateImage();
+}
+function nextImage() {
+    index = (index + 1) % images.length;
+    updateImage();
+}
+
+/* ---- 彈出視窗 ---- */
+function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popupImage").src = images[index].img;
+    document.getElementById("popupText").textContent = images[index].text;
+}
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
